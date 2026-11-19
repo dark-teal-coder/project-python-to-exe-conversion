@@ -4,12 +4,16 @@ from pypdf import PdfReader, PdfWriter
 
 
 def protect_pdfs(input_folder, output_folder, password):
-    # Ensure the output directory exists
+    # Ensure both input and output directories exist
+    input_created = not os.path.exists(input_folder)
+    os.makedirs(input_folder, exist_ok=True)
     os.makedirs(output_folder, exist_ok=True)
 
-    # Check if the input folder exists
-    if not os.path.exists(input_folder):
-        print(f"Error: The input folder '{input_folder}' does not exist.")
+    if input_created:
+        print(
+            f"Created missing input folder '{input_folder}'. "
+            "Place your PDF files inside it and run the script again."
+        )
         return
 
     # Track processed files count
@@ -40,9 +44,12 @@ def protect_pdfs(input_folder, output_folder, password):
             except Exception as e:
                 print(f"Failed to process {filename}: {e}")
 
-    print(
-        f"\nDone! Successfully encrypted {success_count} file(s) into '{output_folder}'."
-    )
+    if success_count == 0:
+        print(f"No PDF files found in '{input_folder}'.")
+    else:
+        print(
+            f"\nDone! Successfully encrypted {success_count} file(s) into '{output_folder}'."
+        )
 
 
 if __name__ == "__main__":
