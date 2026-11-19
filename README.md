@@ -21,17 +21,17 @@
 
 ## Repository Description 
 
-In this project, I try to convert a Python program, which adds a password to a batch of PDF files, to an executable file. Follow the steps below to build one yourself.
+This project converts a Python script that adds passwords to a batch of PDF files into a standalone executable (`.exe`). Follow the steps below to build one yourself.
 
-### Steps:
-1. In your terminal, navigate to the project directory. 
-2. Activate your virtual environment where your script and its dependencies are installed
-3. Install PyInstaller using this command: `pip install pyinstaller`
-4. In your terminal, type this command to build the EXE file: `pyinstaller --onefile {your_program}.py`
+Before you begin: Set up a clean virtual environment and install only the necessary dependencies so PyInstaller does not bundle unneeded packages from your global Python installation.
 
-Before building the executable, we should set up a clean environment so PyInstaller does not bundle unnecessary packages from the global Python installation. Here we use a virtual environment to install only the necessary libraries. 
+<u>Steps</u>:
+1. Open your terminal and navigate to the project directory.
+2. Activate the virtual environment where your script and its dependencies are installed.
+3. Install PyInstaller: pip install pyinstaller
+4. Build the executable: pyinstaller --onefile {your_program}.py
 
-After step 4, PyInstaller creates a few new items in your project directory. The .exe file will be generated in "dist" folder. You can delete the temporary "build" folder and .spec file. 
+After running Step 4, PyInstaller generates a few new files and folders in your project directory. You can find your .exe inside the dist folder, and safely delete the temporary build folder and .spec file afterward.
 
 ## Installation 
 
