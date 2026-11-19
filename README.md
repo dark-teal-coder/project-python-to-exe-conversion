@@ -9,7 +9,7 @@
 
 ## Project
 
-- **Title**: *Machine Learning: Decision Tree Classification on Abalone Data*
+- **Title**: *Python Program to Executable Conversion*
 - **Difficulty**:
   - [ ] Beginner
   - [ ] Intermediate
@@ -21,13 +21,15 @@
 
 ## Repository Description 
 
-Before building the executable, we should set up a clean environment so PyInstaller does not bundle unnecessary packages from the global Python installation. Here we use a virtual environment to install only the necessary libraries. 
+In this project, I try to convert a Python program, which adds a password to a batch of PDF files, to an executable file. Follow the steps below to build one yourself.
 
 ### Steps:
 1. In your terminal, navigate to the project directory. 
 2. Activate your virtual environment where your script and its dependencies are installed
 3. Install PyInstaller using this command: `pip install pyinstaller`
 4. In your terminal, type this command to build the EXE file: `pyinstaller --onefile {your_program}.py`
+
+Before building the executable, we should set up a clean environment so PyInstaller does not bundle unnecessary packages from the global Python installation. Here we use a virtual environment to install only the necessary libraries. 
 
 After step 4, PyInstaller creates a few new items in your project directory. The .exe file will be generated in "dist" folder. You can delete the temporary "build" folder and .spec file. 
 
