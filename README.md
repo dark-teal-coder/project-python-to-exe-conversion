@@ -28,10 +28,10 @@ Before you begin: Set up a clean virtual environment and install only the necess
 <u>Steps</u>:
 1. Open your terminal and navigate to the project directory.
 2. Activate the virtual environment where your script and its dependencies are installed.
-3. Install PyInstaller: pip install pyinstaller
-4. Build the executable: pyinstaller --onefile {your_program}.py
+3. Install PyInstaller: `pip install pyinstaller`
+4. Build the executable: `pyinstaller --onefile {your_program}.py`
 
-After running Step 4, PyInstaller generates a few new files and folders in your project directory. You can find your .exe inside the dist folder, and safely delete the temporary build folder and .spec file afterward.
+After running Step 4, PyInstaller generates a few new files and folders in your project directory. You can find your `.exe` inside the "dist" folder, and safely delete the temporary "build" folder and `.spec` file afterward.
 
 ## Installation 
 
