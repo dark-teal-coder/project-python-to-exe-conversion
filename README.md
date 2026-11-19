@@ -1,11 +1,11 @@
 <!-- README file for projects-->
 
-# Machine Learning: Decision Tree Classification on Abalone Data
+# Python Program to Executable Conversion
 
 ## Metadata
 
 - <ins>Project Owner</ins>: [@dark-teal-coder](github.com/dark-teal-coder)
-- <ins>First Published Date</ins>: 2026-11-05
+- <ins>First Published Date</ins>: 2026-11-19
 
 ## Project
 
@@ -65,10 +65,8 @@ If `pip` fails to locate the relevant packages, you may find it at [Python Packa
 
 ### References 
 
-- [sklearn.model_selection.train_test_split documentation](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
-- [sklearn.model_selection.GridSearchCV documentation](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
-- [sklearn.tree.export_text documentation](https://scikit-learn.org/stable/modules/generated/sklearn.tree.export_text.html)
+- [PyInstaller documentation](https://pyinstaller.org/en/stable/)
 
 &nbsp;
 
-*1st Completion Date: Nov 05, 2026*&emsp;
+*1st Completion Date: Nov 19, 2026*&emsp;
