@@ -24,14 +24,14 @@ def pdf_existed(folder):
 
 
 def protect_pdfs(input_folder, output_folder, password):
-    # Ensure both input and output directories exist
+    ## Ensure both input and output directories exist
     os.makedirs(input_folder, exist_ok=True)
     os.makedirs(output_folder, exist_ok=True)
 
-    # Track processed files count
+    ## Track processed files
     success_count = 0
 
-    # Iterate through all files in the input folder
+    ## Iterate through all files in the input folder
     for filename in os.listdir(input_folder):
         if filename.lower().endswith(".pdf"):
             input_path = os.path.join(input_folder, filename)
@@ -44,17 +44,17 @@ def protect_pdfs(input_folder, output_folder, password):
                 reader = PdfReader(input_path)
                 writer = PdfWriter()
 
-                # Copy all pages into the writer
+                ## Copy all pages into the writer
                 writer.append(reader)
 
-                # Encrypt the PDF with the password
+                ## Encrypt the PDF with the password
                 writer.encrypt(password)
 
-                # Write to the output folder
+                ## Write to the output folder
                 with open(output_path, "wb") as output_file:
                     writer.write(output_file)
 
-                print(f"Protected: {filename}")
+                print(f"Password added to: {filename}")
                 success_count += 1
             except Exception as e:
                 print(f"Failed to process {filename}: {e}")
@@ -62,9 +62,7 @@ def protect_pdfs(input_folder, output_folder, password):
     if success_count == 0:
         print(f"No PDF files found in '{input_folder}'.")
     else:
-        print(
-            f"\nDone! Successfully encrypted {success_count} file(s) into '{output_folder}'."
-        )
+        print(f"Done! Successfully encrypted {success_count} file(s) into '{output_folder}'.")
 
 
 if __name__ == "__main__":
