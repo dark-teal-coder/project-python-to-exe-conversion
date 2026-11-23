@@ -6,17 +6,20 @@ from pypdf import PdfReader, PdfWriter
 def create_sample_pdf(pdf_path):
     """Create a minimal valid PDF file for testing purposes."""
     writer = PdfWriter()
-    writer.add_blank_page(width=612, height=792)  # Standard US Letter size
+    writer.add_blank_page(width=612, height=792) # Standard US Letter size
     with open(pdf_path, "wb") as sample_file:
         writer.write(sample_file)
 
 
-def has_pdf_files(folder):
+def pdf_existed(folder):
     """Return True if folder contains at least one .pdf file (not subdirectory)."""
+    ## any(): True if at least 1 item in an iterable is truthy and False if it is empty or all items are falsy
     return any(
-        entry.lower().endswith(".pdf")
-        and os.path.isfile(os.path.join(folder, entry))
-        for entry in os.listdir(folder)
+        ## Both conditions must be true 
+        name.lower().endswith(".pdf")
+        and os.path.isfile(os.path.join(folder, name))
+        ## os.listdir(): return a list of strings—the names of files or subdirectories inside folder
+        for name in os.listdir(folder)
     )
 
 
@@ -65,27 +68,26 @@ def protect_pdfs(input_folder, output_folder, password):
 
 
 if __name__ == "__main__":
-    # Configuration
-    INPUT_DIR = "input"
-    OUTPUT_DIR = "output"
+    input_dir = "input"
+    output_dir = "output"
 
-    # 1. Check if the input folder exists; if not, create it
-    if not os.path.exists(INPUT_DIR):
-        os.makedirs(INPUT_DIR, exist_ok=True)
-        print(f"Created missing '{INPUT_DIR}' folder.")
-    elif not os.path.isdir(INPUT_DIR):
-        raise NotADirectoryError(f"'{INPUT_DIR}' exists and is not a directory.")
+    ## Check if the input folder exists; if not, create it
+    if not os.path.exists(input_dir):
+        ## exist_ok=True: to skip creating the folder if it's already there instead of throwing a FileExistsError
+        os.makedirs(input_dir, exist_ok=True)
+        print(f"The '{input_dir}' folder has been created.")
 
-    # 2. If input exists (or was just created) and has no PDF file, create a test PDF
-    if not has_pdf_files(INPUT_DIR):
-        sample_pdf_path = os.path.join(INPUT_DIR, "sample_test.pdf")
+    ## If input exists (or was just created) and has no PDF file, create a test PDF
+    if not pdf_existed(input_dir):
+        sample_pdf_path = os.path.join(input_dir, "Sample.pdf")
         create_sample_pdf(sample_pdf_path)
-        print(f"No PDF found in '{INPUT_DIR}'. Created test PDF at '{sample_pdf_path}'.")
+        print(f"No PDF found in '{input_dir}'. A sample PDF has been created at '{sample_pdf_path}'.")
 
+    ## Keep asking the user to enter the password if empty
     while True:
         password = getpass.getpass("Enter PDF password: ")
         if password:
             break
         print("Password cannot be empty. Please try again.")
 
-    protect_pdfs(INPUT_DIR, OUTPUT_DIR, password)
+    protect_pdfs(input_dir, output_dir, password)
